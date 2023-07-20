@@ -11,10 +11,16 @@ namespace SalesWebMvc
 {
     public class Program
     {
+
+        delegate bool CompareNumbers(int n1, int n2);
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+
+            
         }
+
+      
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
