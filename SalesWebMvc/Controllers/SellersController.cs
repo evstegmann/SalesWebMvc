@@ -2,6 +2,7 @@
 using SalesWebMvc.Services;
 using SalesWebMvc.Models;
 using SalesWebMvc.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace SalesWebMvc.Controllers
 {
@@ -31,6 +32,22 @@ namespace SalesWebMvc.Controllers
         }
 
         public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _seellerService.FindById(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
